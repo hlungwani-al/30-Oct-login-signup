@@ -6,28 +6,35 @@
     <link rel="stylesheet" href="style.css" />
     <link rel="icon" sizes="" href="image.png" type="image/png" />
     <script src="main.js" defer></script>
-    <title>Login</title>
+    <title>Register</title>
   </head>
   <body>
-    <form class="login-form">
+    <form class="register-form">
       <h1>Welcome to WeSignin-register-delete</h1>
       <label for="username">Username:</label>
       <input
         type="text"
         id="username"
-        placeholder="Enter your username"
+        placeholder="Enter a username"
         required
       />
       <label for="password">Password:</label>
       <input
         type="password"
         id="password"
-        placeholder="Enter your password"
+        placeholder="Enter a password"
         required
       />
-      <button type="submit" class="`signin-button">Signin</button>
+      <label for="confirmPassword">Confirm password:</label>
+      <input
+        type="password"
+        id="confirmPassword"
+        placeholder="Confirm password"
+        required
+      />
+      <button type="submit" class="register-button">Register</button>
       <p class="haveAccount">
-        Don't have an account <a href="./register.html">register here</a>
+        Already have an account <a href="./login.html">login here</a>
       </p>
     </form>
   </body>
