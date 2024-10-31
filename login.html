@@ -9,16 +9,16 @@
     <title>Login</title>
   </head>
   <body>
-    <form class="login-form">
+    <form class="login-form" onsubmit="userLogin(event)">
       <h1>Welcome to WeSignin-register-delete</h1>
       <label for="username">Username:</label>
       <input
         type="text"
-        id="username"
+        id="usernameLogin"
         placeholder="Enter your username"
         required
       />
-      <label for="password">Password:</label>
+      <label for="passwordLogin">Password:</label>
       <input
         type="password"
         id="password"
