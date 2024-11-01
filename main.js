@@ -1,7 +1,6 @@
 
 
 // Registering a user
-
 function registerUser(event){
     event.preventDefault();
 
@@ -27,6 +26,8 @@ function registerUser(event){
         }
         storedUsers.push({usernames: username, passwords:password});
         localStorage.setItem('users', JSON.stringify(storedUsers));
+
+        localStorage.setItem('currentUser', JSON.stringify({currentUser:username, loggedin:1}));
         alert("Registration successfull");
 
         window.location.href = "success.html";
@@ -53,22 +54,34 @@ function userLogin(event){
                 storedUsers.forEach(user => {
                     if(user.usernames === loginUsername && user.passwords === loginPassword){
                         userFound = 1;
-                        alert("you are successfully loggenin");
-                        window.location.href = "success.html";
-                    }else
-                        alert("user not found");
+                        localStorage.setItem('users', JSON.stringify(storedUsers));
+                        localStorage.setItem('currentUser', JSON.stringify({currentUser:loginUsername, loggedin:1}));
+                        alert("you are successfully loggedin");
+                        window.location.href = "success.html";                       
+                    }
                 });
 
             }else{
-                alert("username doesn't exist, please register");
-                window.location.href = "register.html";
+                alert("username or password not found, please enter a correct one or register");
             }
 
-        }else{
-            alert("Please enter a password")
         }
 
     } else {
         alert("Please enter a username");
+    }
+}
+
+function logout(event){
+    event.preventDefault();
+    const storedUsers = JSON.parse(localStorage.getItem('users')) || [];
+
+    if(storedUsers.length>0){
+
+        storedUsers.loggedIn = 0;
+        localStorage.setItem('users', JSON.stringify(storedUsers));
+        alert("you have successfully logged out");
+    }else {
+        alert("Seems like no user is logged in");
     }
 }
